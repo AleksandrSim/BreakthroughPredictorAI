@@ -5,18 +5,15 @@ from src.utils.load_cfg import load_yaml
 
 
 class Preprocessor:
-    MINUTES_PER_HOUR = 60
-
     INTERVALS = {"1m": 1, "5m": 5, "15m": 15}
 
-    def __init__(self, data, indicators, filter=False, order=5, k=2, group="10min"):
+    def __init__(self, data, indicators, filter=False, order=5, k=2):
         self.data = data
         self.data.columns = self.data.columns.str.title()
         self.filter = filter
         self.order = order
         self.k = k
         self.indicators = indicators
-        self.group = group
 
     def convert_timestamp(self):
         self.data["Date"] = pd.to_datetime(
@@ -32,23 +29,6 @@ class Preprocessor:
             ]
         else:
             self.data = self.data[self.data["Date"] > pd.to_datetime(start_date)]
-
-    def group_data(self):
-        if self.group != "1m":
-            self.data = (
-                self.data.resample(self.group, on="Date")
-                .agg(
-                    {
-                        "Open": "first",
-                        "High": "max",
-                        "Low": "min",
-                        "Close": "last",
-                        "Volume_(Currency)": "sum",
-                    }
-                )
-                .dropna()
-                .reset_index()
-            )
 
     def label_sustained_movements(self):
         trend_identifier = TargetCreator(self.data[["Close", "Date"]])
@@ -113,9 +93,6 @@ class Preprocessor:
 
         self.filter_data(date_range[0], date_range[1])
         print("Data filtering is done")
-
-        self.group_data()
-        print("Data Groupping is Done")
 
         self.add_moving_averages_rsi_and_bollinger_bands()
         print("Adding moving averages, RSI, and Bollinger Bands is done")

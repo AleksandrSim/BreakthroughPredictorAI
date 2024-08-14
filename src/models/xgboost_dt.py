@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 
 from src.utils.load_cfg import load_yaml
@@ -51,9 +52,12 @@ class ModelTrainer:
                 eval_metric="logloss",
                 scale_pos_weight=scale_pos_weight,
             )
+        elif self.model_type == "random_forest":
+            # Automatically balance the class weights
+            return RandomForestClassifier(random_state=42, class_weight="balanced")
         else:
             raise ValueError(
-                "Invalid model type specified. Choose 'decision_tree' or 'xgboost'."
+                "Invalid model type specified. Choose 'decision_tree', 'xgboost', or 'random_forest'."
             )
 
     def train_model(self):
@@ -83,12 +87,12 @@ if __name__ == "__main__":
 
     filepath = cfg["training_path"]
 
+    # Run Decision Tree
     dt_model = ModelTrainer(
         filepath, model_type="decision_tree", target="Upward", train_size=0.8
     )
     dt_model.train_model()
     print("Decision Tree Results")
-
     dt_model.evaluate_model()
 
     # Run XGBoost
@@ -96,5 +100,13 @@ if __name__ == "__main__":
         filepath, model_type="xgboost", target="Upward", train_size=0.8
     )
     xgb_model.train_model()
-    print("Xgboost results")
+    print("Xgboost Results")
     xgb_model.evaluate_model()
+
+    # Run Random Forest
+    rf_model = ModelTrainer(
+        filepath, model_type="random_forest", target="Upward", train_size=0.8
+    )
+    rf_model.train_model()
+    print("Random Forest Results")
+    rf_model.evaluate_model()
