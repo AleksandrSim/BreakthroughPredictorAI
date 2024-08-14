@@ -9,4 +9,5 @@ def load_yaml(yaml_path):
 
 if __name__ == "__main__":
     path = "cfg.yaml"
-    print(load_yaml(path))
+    cfg = load_yaml(path)
+    print(cfg)
