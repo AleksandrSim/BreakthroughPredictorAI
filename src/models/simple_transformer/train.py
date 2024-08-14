@@ -41,14 +41,14 @@ class Trainer:
         return total_loss / len(self.train_loader)
 
     def validate(self):
-        self.model.eval()  
+        self.model.eval()
         all_preds = []
         all_targets = []
 
-        with torch.no_grad():  # 
+        with torch.no_grad():  #
             for batch in tqdm(self.val_loader, desc="Validation"):
                 sequences, targets = batch
-                targets = targets.squeeze() 
+                targets = targets.squeeze()
                 outputs = self.model(sequences).squeeze()  # Model outputs
 
                 # Apply sigmoid activation and round to get binary predictions

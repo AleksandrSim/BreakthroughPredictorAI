@@ -1,14 +1,12 @@
-
 import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
 
-from src.utils.load_cfg import load_yaml
-
-from src.models.simple_transformer.transformer import SimpleTransformer
-from src.models.simple_transformer.train import Trainer
 from src.models.simple_transformer.dataset import create_dataloader, split_data
+from src.models.simple_transformer.train import Trainer
+from src.models.simple_transformer.transformer import SimpleTransformer
+from src.utils.load_cfg import load_yaml
 
 
 def load_data(cfg):
@@ -22,7 +20,9 @@ def prepare_train_val_loaders(df, window_size, batch_size, device):
     train_df, val_df = split_data(df)
 
     train_loader, columns = create_dataloader(train_df, window_size, batch_size, device)
-    val_loader, _ = create_dataloader(val_df, window_size, batch_size, device, columns=columns)
+    val_loader, _ = create_dataloader(
+        val_df, window_size, batch_size, device, columns=columns
+    )
 
     return train_loader, val_loader, columns
 
@@ -43,7 +43,9 @@ def initialize_model(cfg, device):
     output_dim = cfg.get("output_dim", 1)
     num_time_varying_vars = cfg.get("num_time_varying_vars", 36)
 
-    model = SimpleTransformer(embed_dim, num_heads, num_layers, output_dim, num_time_varying_vars)
+    model = SimpleTransformer(
+        embed_dim, num_heads, num_layers, output_dim, num_time_varying_vars
+    )
     model.to(device)
     return model
 
@@ -56,16 +58,28 @@ def main():
 
     window_size = cfg.get("window_size", 3)
     batch_size = cfg.get("batch_size", 128)
-    train_loader, val_loader, _ = prepare_train_val_loaders(df, window_size, batch_size, device)
+    train_loader, val_loader, _ = prepare_train_val_loaders(
+        df, window_size, batch_size, device
+    )
 
     pos_weight = calculate_pos_weight(df)
     pos_weight = pos_weight.to(device)
     criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 
     model = initialize_model(cfg, device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=cfg.get("learning_rate", 0.0005))
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=cfg.get("learning_rate", 0.0005)
+    )
 
-    trainer = Trainer(model, train_loader, val_loader, criterion, optimizer, device, save_path=cfg["model_save_path"])
+    trainer = Trainer(
+        model,
+        train_loader,
+        val_loader,
+        criterion,
+        optimizer,
+        device,
+        save_path=cfg["model_save_path"],
+    )
     trainer.train(cfg.get("epochs", 300))
 
 
