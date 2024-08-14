@@ -14,31 +14,8 @@ The data used for this project is sourced from [Kaggle's BTC/USD Historical Data
 
 ## Project Structure
 
+
 The project is organized as follows:
-
-```plaintext
-PriceBreakthroughsAI/
-├── LICENSE
-├── README.md
-├── cfg.yaml                  # Configuration file for the project
-├── requirements.txt          # List of dependencies required to run the project
-├── scripts                   # Scripts for training and evaluation
-│   ├── nulls_check.py        # Script for checking and handling null values in the data
-│   ├── train_transformer.py  # Script for training the transformer-based model
-│   └── train_tree.py         # Script for training decision tree-based models
-└── src                       # Source code for the project
-    ├── models                # Model definitions and training pipelines
-    │   ├── simple_transformer  # Transformer-based model
-    │   │   ├── dataset.py    # Dataset preparation for the transformer model
-    │   │   ├── train.py      # Training script for the transformer model
-    │   │   └── transformer.py # Transformer model architecture
-    │   └── xgboost_dt.py     # XGBoost and Decision Tree model implementation
-    ├── prepare               # Data preparation scripts
-    │   ├── prepare_features.py # Feature engineering scripts
-    │   └── prepare_target.py # Target variable preparation
-    └── utils                 # Utility functions
-        └── load_cfg.py       # Configuration loading utilities
-
 
 ## Results
 
@@ -46,49 +23,49 @@ PriceBreakthroughsAI/
 - **Accuracy:** 93.4%
 - **Confusion Matrix:**
 
-```plaintext
-[[139800   3726]
- [  6133    280]]
-```
+|             | Predicted 0 | Predicted 1 |
+|-------------|-------------|-------------|
+| **Actual 0**| 139,800     | 3,726       |
+| **Actual 1**| 6,133       | 280         |
 
 - **Classification Report:**
 
 | Class | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| 0     | 0.96      | 0.97   | 0.97     | 143526  |
-| 1     | 0.07      | 0.04   | 0.05     | 6413    |
+| 0     | 0.96      | 0.97   | 0.97     | 143,526 |
+| 1     | 0.07      | 0.04   | 0.05     | 6,413   |
 
 ### XGBoost Model
 - **Accuracy:** 82.0%
 - **Confusion Matrix:**
 
-```plaintext
-[[120680  22846]
- [  4112   2301]]
-```
+|             | Predicted 0 | Predicted 1 |
+|-------------|-------------|-------------|
+| **Actual 0**| 120,680     | 22,846      |
+| **Actual 1**| 4,112       | 2,301       |
 
 - **Classification Report:**
 
 | Class | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| 0     | 0.97      | 0.84   | 0.90     | 143526  |
-| 1     | 0.09      | 0.36   | 0.15     | 6413    |
+| 0     | 0.97      | 0.84   | 0.90     | 143,526 |
+| 1     | 0.09      | 0.36   | 0.15     | 6,413   |
 
 ### Random Forest Model
 - **Accuracy:** 95.7%
 - **Confusion Matrix:**
 
-```plaintext
-[[143526      0]
- [  6413      0]]
-```
+|             | Predicted 0 | Predicted 1 |
+|-------------|-------------|-------------|
+| **Actual 0**| 143,526     | 0           |
+| **Actual 1**| 6,413       | 0           |
 
 - **Classification Report:**
 
 | Class | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| 0     | 0.96      | 1.00   | 0.98     | 143526  |
-| 1     | 0.00      | 0.00   | 0.00     | 6413    |
+| 0     | 0.96      | 1.00   | 0.98     | 143,526 |
+| 1     | 0.00      | 0.00   | 0.00     | 6,413   |
 
 ### Transformer-Based Model
 - **Note:** Transformer-based models can achieve results similar to those of decision tree, XGBoost, and random forest models, depending on the training configuration. These models are particularly useful for capturing temporal patterns in time series data, which can enhance breakthrough prediction accuracy.
