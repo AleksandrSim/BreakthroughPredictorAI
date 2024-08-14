@@ -12,7 +12,7 @@ def prepare_sequences(data, targets, window_size):
             previous_targets = targets[i : i + window_size - 1].squeeze()
             seq_data[:, -1] = torch.cat(
                 (previous_targets, torch.tensor([0.0], dtype=torch.float32))
-            ) 
+            )
         sequences.append(seq_data)
         sequence_targets.append(targets[i + window_size])
     return torch.stack(sequences), torch.stack(sequence_targets)

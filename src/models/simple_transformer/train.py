@@ -31,9 +31,7 @@ class Trainer:
         total_loss = 0
         for batch in tqdm(self.train_loader, desc="Training"):
             sequences, targets = batch
-            #            print(f'sequnece_shape{sequences.shape}')
-            #            print(f'target_shape{targets.shape}')
-            targets = targets.squeeze()  # Ensure targets have the correct shape
+            targets = targets.squeeze()  #
             outputs = self.model(sequences).squeeze()
             loss = self.criterion(outputs, targets)
             self.optimizer.zero_grad()
@@ -43,14 +41,14 @@ class Trainer:
         return total_loss / len(self.train_loader)
 
     def validate(self):
-        self.model.eval()  # Set the model to evaluation mode
+        self.model.eval()  
         all_preds = []
         all_targets = []
 
-        with torch.no_grad():  # Disable gradient computation
+        with torch.no_grad():  # 
             for batch in tqdm(self.val_loader, desc="Validation"):
                 sequences, targets = batch
-                targets = targets.squeeze()  # Ensure targets have the correct shape
+                targets = targets.squeeze() 
                 outputs = self.model(sequences).squeeze()  # Model outputs
 
                 # Apply sigmoid activation and round to get binary predictions
@@ -130,18 +128,8 @@ if __name__ == "__main__":
         val_df, window_size, batch_size, device, columns=columns
     )
 
-    for sequences, targets in train_loader:
-        print(
-            f"Train Loader - Sequences shape: {sequences.shape},
-            Targets shape: {targets.shape}"
-        )
-        break  # Just print the shape of the first batch
-
     for sequences, targets in val_loader:
-        print(
-            f"Validation Loader - Sequences shape: {sequences.shape},
-            Targets shape: {targets.shape}"
-        )
+        print(f"shape:{sequences.shape},shape: {targets.shape}")
         break  # Just pr
 
     embed_dim = 128
