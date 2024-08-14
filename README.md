@@ -17,6 +17,28 @@ The data used for this project is sourced from [Kaggle's BTC/USD Historical Data
 
 The project is organized as follows:
 
+PriceBreakthroughsAI/
+├── LICENSE
+├── README.md
+├── cfg.yaml                  # Configuration file for the project
+├── requirements.txt          # List of dependencies required to run the project
+├── scripts                   # Scripts for training and evaluation
+│   ├── nulls_check.py        # Script for checking and handling null values in the data
+│   ├── train_transformer.py  # Script for training the transformer-based model
+│   └── train_tree.py         # Script for training decision tree-based models
+└── src                       # Source code for the project
+    ├── models                # Model definitions and training pipelines
+    │   ├── simple_transformer  # Transformer-based model
+    │   │   ├── dataset.py    # Dataset preparation for the transformer model
+    │   │   ├── train.py      # Training script for the transformer model
+    │   │   └── transformer.py # Transformer model architecture
+    │   └── xgboost_dt.py     # XGBoost and Decision Tree model implementation
+    ├── prepare               # Data preparation scripts
+    │   ├── prepare_features.py # Feature engineering scripts
+    │   └── prepare_target.py # Target variable preparation
+    └── utils                 # Utility functions
+        └── load_cfg.py       # Configuration loading utilities
+
 ## Results
 
 ### Decision Tree Model
@@ -107,7 +129,6 @@ The models were evaluated based on accuracy, precision, recall, and F1-score. Be
 ### 4. **Future Work**
    - Outline potential future improvements or extensions of the project.
 
-```markdown
 ## Future Work
 
 - **Hyperparameter Tuning:** Further fine-tuning of model hyperparameters to improve performance, particularly for class 1 predictions.
@@ -118,7 +139,6 @@ The models were evaluated based on accuracy, precision, recall, and F1-score. Be
 ### 5. **Contributing**
    - If this is an open-source project, include a section on how others can contribute.
 
-```markdown
 ## Contributing
 
 Contributions are welcome! If you have suggestions or improvements, please fork the repository and submit a pull request. You can also open an issue if you find a bug or have a question.
@@ -126,7 +146,6 @@ Contributions are welcome! If you have suggestions or improvements, please fork 
 ### 6. **License**
    - Reiterate the license under which the project is released.
 
-```markdown
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -134,7 +153,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### 7. **Acknowledgments**
    - Give credit to any libraries, tools, or individuals that contributed to the project.
 
-```markdown
 ## Acknowledgments
 
 - **Scikit-learn** and **XGBoost** for providing the machine learning algorithms used in this project.
