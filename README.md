@@ -12,32 +12,6 @@ The financial markets are highly dynamic and often exhibit sudden and significan
 
 The data used for this project is sourced from [Kaggle's BTC/USD Historical Data](https://www.kaggle.com/datasets/prasoonkottarathil/btcinusd). This dataset includes historical price data for Bitcoin (BTC) against the US Dollar (USD), which has been preprocessed to create the features used in the models.
 
-## Project Structure
-
-
-The project is organized as follows:
-
-PriceBreakthroughsAI/
-├── LICENSE
-├── README.md
-├── cfg.yaml                  # Configuration file for the project
-├── requirements.txt          # List of dependencies required to run the project
-├── scripts                   # Scripts for training and evaluation
-│   ├── nulls_check.py        # Script for checking and handling null values in the data
-│   ├── train_transformer.py  # Script for training the transformer-based model
-│   └── train_tree.py         # Script for training decision tree-based models
-└── src                       # Source code for the project
-    ├── models                # Model definitions and training pipelines
-    │   ├── simple_transformer  # Transformer-based model
-    │   │   ├── dataset.py    # Dataset preparation for the transformer model
-    │   │   ├── train.py      # Training script for the transformer model
-    │   │   └── transformer.py # Transformer model architecture
-    │   └── xgboost_dt.py     # XGBoost and Decision Tree model implementation
-    ├── prepare               # Data preparation scripts
-    │   ├── prepare_features.py # Feature engineering scripts
-    │   └── prepare_target.py # Target variable preparation
-    └── utils                 # Utility functions
-        └── load_cfg.py       # Configuration loading utilities
 
 ## Results
 
