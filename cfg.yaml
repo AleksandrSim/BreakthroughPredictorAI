@@ -1,0 +1,5 @@
+btc_path: /Users/aleksandrsimonyan/Desktop/btc_public/bitcoin_public_data.csv
+Order: 5
+K: 2
+training_path: /Users/aleksandrsimonyan/Desktop/btc_public/training_data.csv
+model_save_path: /Users/aleksandrsimonyan/Desktop/btc_public/weights/
