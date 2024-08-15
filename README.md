@@ -105,15 +105,6 @@ The models were evaluated based on accuracy, precision, recall, and F1-score. Be
 | XGBoost         | 82.0%    | 0.09                | 0.36             | 0.15               |
 | Random Forest   | 95.7%    | 0.00                | 0.00             | 0.00               |
 
-### 4. **Future Work**
-   - Outline potential future improvements or extensions of the project.
-
-## Future Work
-
-- **Hyperparameter Tuning:** Further fine-tuning of model hyperparameters to improve performance, particularly for class 1 predictions.
-- **Model Ensemble:** Combining the strengths of multiple models (e.g., using an ensemble of XGBoost and Decision Trees) to enhance prediction accuracy.
-- **Real-time Predictions:** Implementing real-time predictions to be used in live trading environments.
-- **Extended Data:** Incorporating more data, including other cryptocurrencies or additional features, to improve model generalization.
 
 ## Acknowledgments
 
