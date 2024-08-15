@@ -64,7 +64,7 @@ The data used for this project is sourced from [Kaggle's BTC/USD Historical Data
 | 1     | 0.00      | 0.00   | 0.00     | 6,413   |
 
 ### Transformer-Based Model
-- **Note:** ### Transformer-Based Model
+- **Note:** 
 - **Note:** Transformer-based models can achieve results similar to those of decision tree and XGBoost, depending on the training configuration. These models are particularly useful for capturing temporal patterns in time series data, which can enhance breakthrough prediction accuracy.
 
 Extensive experiments have been conducted with transformer-based models, and depending on the configuration, these models have shown the most promising results. Transformer-based models excel in handling time series data due to their ability to efficiently capture long-range dependencies. Unlike traditional models, which may struggle with temporal relationships, transformers utilize a window of time stamps to analyze sequences of data points. This allows the model to understand and predict future movements based on the patterns observed in the historical data.
