@@ -116,23 +116,6 @@ The models were evaluated based on accuracy, precision, recall, and F1-score. Be
 - **Real-time Predictions:** Implementing real-time predictions to be used in live trading environments.
 - **Extended Data:** Incorporating more data, including other cryptocurrencies or additional features, to improve model generalization.
 
-### 5. **Contributing**
-   - If this is an open-source project, include a section on how others can contribute.
-
-## Contributing
-
-Contributions are welcome! If you have suggestions or improvements, please fork the repository and submit a pull request. You can also open an issue if you find a bug or have a question.
-
-### 6. **License**
-   - Reiterate the license under which the project is released.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### 7. **Acknowledgments**
-   - Give credit to any libraries, tools, or individuals that contributed to the project.
-
 ## Acknowledgments
 
 - **Scikit-learn** and **XGBoost** for providing the machine learning algorithms used in this project.
